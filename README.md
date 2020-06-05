@@ -8,14 +8,14 @@ On the locally hosted page, the API calls' retrieved data shows the following:
 # This Page Displays information using the API: https://bpdts-test-app.herokuapp.com
 Below are all the users that live in London:
 
-Mechelle Boam mboam3q@thetimes.co.uk
-Terry Stowgill tstowgillaz@webeden.co.uk
-Andrew Seabrocke aseabrockeef@indiegogo.com
-Stephen Mapstone smapstonei9@bandcamp.com
-Tiffi Colbertson tcolbertsonj3@vimeo.com
-Katee Gopsall kgopsallm1@cam.ac.uk
+* Mechelle Boam mboam3q@thetimes.co.uk
+* Terry Stowgill tstowgillaz@webeden.co.uk
+* Andrew Seabrocke aseabrockeef@indiegogo.com
+* Stephen Mapstone smapstonei9@bandcamp.com
+* Tiffi Colbertson tcolbertsonj3@vimeo.com
+* Katee Gopsall kgopsallm1@cam.ac.uk
 
 And here are all the users that live within a 50km radius of London:
 
-Ancell Garnsworthy agarnsworthy7d@seattletimes.com
-Phyllys Hebbs phebbsfd@umn.edu
+* Ancell Garnsworthy agarnsworthy7d@seattletimes.com
+* Phyllys Hebbs phebbsfd@umn.edu
