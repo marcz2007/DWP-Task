@@ -1,0 +1,12 @@
+extends layout
+block content
+  h1 This Page Displays information using the API: https://bpdts-test-app.herokuapp.com
+  p Below are all the users that live in London:
+  ul
+    each user in londonUsers
+      li= user
+  p And here are all the users that live within a 50km radius of London:
+  ul
+    each user in allUsers
+      li= user
+
