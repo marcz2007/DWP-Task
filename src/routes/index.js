@@ -36,25 +36,24 @@ function isUserWithin50KmOfLondon(lat2, lon2) {
 
 }
 
+const dag = {
+    londonUsers: '',
+    allUsers: ''
+};
+
+function getStringValues() {
+    const jadeArguments = {
+        londonUsers: '',
+        allUsers: ''
+
+    }
+    return jadeArguments;
+}
+
 
 router.get('/', function (req, res, next) {
 
 // implement fetch for both requests
-//      London Users Request:
-    const londonUsersInput = "https://bpdts-test-app.herokuapp.com/city/London/users";
-    const londonUsersPromise = fetch(londonUsersInput).then(function (res) {
-        return res.json();
-    }).then(
-        function (json) {
-            const londonUsersArray = [];
-            for (let i = 0; i < json.length; i++) {
-
-                londonUsersArray[i] = json[i].first_name + ' ' + json[i].last_name + ' ' + json[i].email;
-            }
-
-            return londonUsersArray;
-        });
-
 
 //      All Users Request:
     const allUsersInput = "https://bpdts-test-app.herokuapp.com/users";
@@ -73,15 +72,51 @@ router.get('/', function (req, res, next) {
         });
 
 
-    Promise.all([londonUsersPromise, allUsersPromise]).then((values) => {
-        console.log(values[1]);
+//      London Users Request:
+    const londonUsersInput = "https://bpdts-test-app.herokuapp.com/city/London/users";
+    const londonUsersPromise = fetch(londonUsersInput).then(function (res) {
+        return res.json();
+    }).then(
+        function (json) {
+            const londonUsersArray = [];
+            for (let i = 0; i < json.length; i++) {
 
-        res.render('index', {
-            londonUsers: (values[0]),
-            allUsers: values[1]
+                londonUsersArray.push(json[i].first_name + ' ' + json[i].last_name + ' ' + json[i].email);
+            }
+
+            return londonUsersArray;
         });
+
+
+    if (req.query.allUserClick === 'Click here to show data of all users') {
+        const londonUsersPromise = '';
+
+        Promise.all([londonUsersPromise, allUsersPromise]).then((values) => {
+
+
+            res.render('index', {
+                londonUsers: values[0],
+                allUsers: values[1]
+            });
     });
-})
-;
+
+    } else if (req.query.londonUsers === 'Click here to show data of London inhabitants') {
+        const allUsersPromise = '';
+
+
+        Promise.all([londonUsersPromise, allUsersPromise]).then((values) => {
+            res.render('index', {
+                londonUsers: values[0],
+                allUsers: values[1]
+            });
+    });
+
+    } else {
+        res.render('index', getStringValues(dag));
+    }
+
+
+});
+
 
 module.exports = router;

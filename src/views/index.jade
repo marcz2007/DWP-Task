@@ -1,12 +1,56 @@
 extends layout
 block content
+  mixin quadrant(  rowValue, tablePosition  )
+    th
+      if rowValue == undefined
+        form(action="/", method="post")
+          input(type='text', name=tablePosition)
+          input( type='submit', value='Submit')
+      else
+        a(href='/?position=' + tablePosition) #{rowValue}
+
+  style.
+    body {
+      background: rgba(244, 244, 244, 0.98);
+      font-family: Verdana;
+      color: #000000;
+      padding: 30px;
+    }
+
+    th, td {
+      border: 3px solid black;
+      padding: 30px;
+    }
+
+
+
   h1 This Page Displays information using the API: https://bpdts-test-app.herokuapp.com
-  p Below are all the users that live in London:
-  ul
-    each user in londonUsers
-      li= user
-  p And here are all the users that live within a 50km radius of London:
-  ul
-    each user in allUsers
-      li= user
+  h2 Click the two buttons below to show either all users that live within a 50km radius of London or all the users that currently live inside London itself
+  table
+    tbody
+      tr
+        th
+          p This box shows all the users that live within a 50km radius of London:
+            ul
+              each user in allUsers
+                li= user
+
+
+    form(action="/", method="get")
+      input( type='submit', value='Click here to show data of all users', name= 'allUserClick')
+
+  table
+    tbody
+      tr
+        th
+          p This box shows all the users that live in London itself:
+          ul
+            each user in londonUsers
+              li= user
+    form(action="/", method="get")
+      input( type='submit', value='Click here to show data of London inhabitants', name= 'londonUsers')
+
+
+
+
 
